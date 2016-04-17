@@ -1,0 +1,5 @@
+Source: ftp://geodesy.noaa.gov/cors/rinex/2016/076/farb/
+Farallon Island
+Lat Lng Elev(m) X(m) Y(m) Z(m)
+37.6972	-123.0008	-21.7	-2658220.5	-4138072.8	4049411.8
+Ref: https://igscb.jpl.nasa.gov/igscb/data/format/rinex211.txt
