@@ -1,3 +1,6 @@
+### Purpose
+Calculate the latitude and longtitude of Farallon Island CORS site by utilizing its RINEX observation and navigation files downloaded from NOAA ftp server.
+
 ### Source:
 ftp://geodesy.noaa.gov/cors/rinex/2016/076/farb/
 
