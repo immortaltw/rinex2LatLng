@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-struct EstimateVars {
+struct ObsVars {
 	int interval;       // Observation Interval
 	double x0;			// Approximate X location
 	double y0;			// Approximate Y location
