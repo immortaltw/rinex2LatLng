@@ -4,30 +4,30 @@
  */
 struct Ephemeris {
 	int PRN;
-	float af0;  // SV clock bias
-	float af1;  // SV clock drift
-	float af2;  // SV clock drift rate
-	float toe;  // Time of week
-	float toc;  // Time of clock
+	double af0;  // SV clock bias
+	double af1;  // SV clock drift
+	double af2;  // SV clock drift rate
+	double toe;  // Time of week
+	double toc;  // Time of clock
 	/** 
 	 * Perturbation Params
 	 */
-	float crs;
-	float crc;
-	float cus;
-	float cuc;
-	float cis;
-	float cic;
-	float deltaN;
-	float omegaDot;
-	float idot;
+	double crs;
+	double crc;
+	double cus;
+	double cuc;
+	double cis;
+	double cic;
+	double deltaN;
+	double omegaDot;
+	double idot;
 	/** 
 	 * Keplerian Params
 	 */
-	float M0;
-	float sqrtA;
-	float i0;
-	float omegaA;
-	float omega;
-	float e;
+	double M0;
+	double sqrtA;
+	double i0;
+	double omegaA;
+	double omega;
+	double e;
 };

@@ -1,9 +1,10 @@
 #include <iostream>
 #include "ObsParser.h"
+#include "NavParser.h"
 
 int main() {
 	std::cout<< "Test Launcher" << std::endl;
 
-	ObsParser oParser(std::string("/Users/immortal/Dev/projects/rinex2LatLng/resources/farb0760.16o"));
-	oParser.parse();
+	NavParser nParser(std::string("/Users/immortal/Dev/projects/rinex2LatLng/resources/brdc0760.16n"));
+	nParser.parse();
 }
