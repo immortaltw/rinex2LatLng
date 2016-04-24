@@ -1,12 +1,10 @@
-#include <ifstream>
+#include <fstream>
 #include "ObsParser.h"
 
-using namespace std;
-
 void ObsParser::parse() {
-	ifstream fin(_filePath, ios::in);
-	string str;
-	while(getline(fin, str)) {
-		cout << str << endl;
+	std::ifstream fin(_filePath);
+	std::string str;
+	while(std::getline(fin, str)) {
+		std::cout << str << std::endl;
 	}
 }

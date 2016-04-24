@@ -5,7 +5,7 @@
 class NavParser {
 public:
 	NavParser(string filePath);
-	Ephemeris& getEphemeris();
+	Ephemeris& getEphemeris(uint32_t time);
 private:
 	std::vector<Ephemeris> eph;
 };
