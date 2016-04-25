@@ -1,6 +1,7 @@
 #include <fstream>
 #include <sstream>
 #include "NavParser.h"
+#include "util.h"
 
 void NavParser::parse() {
 	std::ifstream fin(_filePath);
@@ -29,6 +30,7 @@ void NavParser::parseIonoAlpha(std::string &line) {
 	std::istringstream iss(line);
 	std::string s;
 	while (iss >> s) {
+		Utility::fortranD2cpp(s);
 		std::cout << s << std::endl;
 	}
 }
