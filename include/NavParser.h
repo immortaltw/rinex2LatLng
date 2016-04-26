@@ -7,6 +7,7 @@ class NavParser {
 public:
 	NavParser(std::string filePath): _filePath(filePath) {
 		_headerDataEndCol = 60;
+		_ephLines = 8;
 		_ionoAplhaStr = "ION ALPHA";
 		_ionoBetaStr = "ION BETA";
 		_deltaUTCStr = "DELTA-UTC: A0,A1,T,W";
@@ -15,12 +16,17 @@ public:
 	void parse();
 	Ephemeris& getEphemeris(uint32_t time);
 private:
-	void parseIonoAlpha(std::string &line);
-	void parseIonoBeta(std::string &line);
-	void parseDeltaUTC(std::string &line);
+	void _parseIonoAlpha(std::string &line);
+	void _parseIonoBeta(std::string &line);
+	void _parseDeltaUTC(std::string &line);
+
+	void _internalLineParser(std::string &line, std::vector<double> &container);
+	void _ephLineParser(std::vector<std::string> &lines, Ephemeris &eph);
+	void _fillEph(int nthLine, Ephemeris &eph, std::vector<std::string> &lineV);
 
 	int _headerDataEndCol;
-	std::vector<Ephemeris> eph;
+	int _ephLines;
+	std::vector<Ephemeris> _ephemeris;
 	std::string _filePath;
 	std::string _ionoAplhaStr;
 	std::string _ionoBetaStr;
@@ -30,12 +36,7 @@ private:
 	 * For ionospheric correction (Klobuchar model).
 	 * Obtained from the header of a nav file.
 	 */
-	double alpha0;
-	double alpha1;
-	double alpha2;
-	double alpha3;
-	double beta0;
-	double beta1;
-	double beta2;
-	double beta3;
+	std::vector<double> _alphas;
+	std::vector<double> _betas;
+	std::vector<double> _deltaUTC;
 };

@@ -1,4 +1,5 @@
 include_directories("../include")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_library (Rinex ObsParser.cpp NavParser.cpp)
 add_executable (demo main.cpp)
 target_link_libraries (demo Rinex ${ARMADILLO_LIBRARIES})
