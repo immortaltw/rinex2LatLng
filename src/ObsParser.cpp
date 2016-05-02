@@ -104,6 +104,11 @@ int ObsParser::_parseFirstLineOfObs(std::string &line, ObsVars &curObs, int &epo
 
 	int numOfSv = std::stoi(line.substr(29, 3));
 
+	double dt = 0;
+	if (line.size() > 68) {
+		if (line.substr(69) != "") dt = std::stod(line.substr(69));
+	}
+
 	return (this->_numOfObs <= 5)? numOfSv: numOfSv*2;
 }
 

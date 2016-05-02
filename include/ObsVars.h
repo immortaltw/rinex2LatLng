@@ -5,6 +5,7 @@
 
 struct ObsVars {
 	double timeOfEpoch;       // Time of epoch
+	double _dt;	        // Receiver clock offset (sec)
 	std::unordered_map<int, double> pseudorangeMap; // PRN # vs L1 C/A code pseudorange
 	std::vector<int> PRNS;  // PRN #s (assume all GPS)
 	void clear() {
