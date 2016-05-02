@@ -5,6 +5,9 @@
 int main() {
 	std::cout<< "Test Launcher" << std::endl;
 
-	NavParser nParser(std::string("../../resources/brdc0760.16n"));
-	nParser.parse();
+	// NavParser nParser(std::string("../../resources/brdc0760.16n"));
+	// nParser.parse();
+
+	ObsParser oParser(std::string("../../resources/farb0760.16o"));
+	oParser.parse();
 }

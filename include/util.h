@@ -1,10 +1,13 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <ctime>
 
 class Utility {
 public:
 	static double fortranD2cppD(std::string &fortranD);
+	static double secondsFromGPSBegin(double y, double m, double d,
+									  double h, double min, double s);
 };
 
 double Utility::fortranD2cppD(std::string &fortranD) {
@@ -28,4 +31,27 @@ double Utility::fortranD2cppD(std::string &fortranD) {
 		res *= factorD;
 	}
 	return res;
+}
+
+// Not very robust.
+double Utility::secondsFromGPSBegin(double y, double m, double d,
+									  double h, double min, double s) {
+	struct tm tGPS = {0};
+	struct tm tN = {0};
+	// Zero time-point of GPS is defined as 12:00am of 1/6/1980.
+	tGPS.tm_year = 80;
+	tGPS.tm_mon = 0;
+	tGPS.tm_mday = 6;
+	tGPS.tm_hour = 0;
+	tGPS.tm_min = 0;
+	tGPS.tm_sec = 0;
+
+	tN.tm_year = y<80? y+100: y;
+	tN.tm_mon = m;
+	tN.tm_mday = d;
+	tN.tm_hour = h;
+	tN.tm_min = min;
+	tN.tm_sec = s;
+
+	return difftime(mktime(&tN), mktime(&tGPS));
 }

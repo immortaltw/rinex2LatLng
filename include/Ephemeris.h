@@ -27,7 +27,7 @@ struct Ephemeris {
 	double M0;
 	double sqrtA;
 	double i0;
-	double omegaA;
+	double omega0;
 	double omega;
 	double e;
 };

@@ -3,6 +3,7 @@
 #include <vector>
 #include "Ephemeris.h"
 
+// ~1MB ram for brdc0760.16n
 class NavParser {
 public:
 	NavParser(std::string filePath): _filePath(filePath) {
@@ -14,7 +15,8 @@ public:
 		_headerEndStr = "END OF HEADER";
 	};
 	void parse();
-	Ephemeris& getEphemeris(uint32_t time);
+	Ephemeris& getEphemeris(double toc, int PRN);
+
 private:
 	void _parseIonoAlpha(std::string &line);
 	void _parseIonoBeta(std::string &line);
@@ -22,7 +24,7 @@ private:
 
 	void _internalLineParser(std::string &line, std::vector<double> &container);
 	void _ephLineParser(std::vector<std::string> &lines, Ephemeris &eph);
-	void _fillEph(int nthLine, Ephemeris &eph, std::vector<std::string> &lineV);
+	void _fillEph(int nthLine, Ephemeris &eph, std::string &lineV);
 
 	int _headerDataEndCol;
 	int _ephLines;

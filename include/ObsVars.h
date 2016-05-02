@@ -1,14 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <unordered_map>
 
 struct ObsVars {
-	int interval;       // Observation Interval
-	double x0;			// Approximate X location
-	double y0;			// Approximate Y location
-	double z0;			// Approximate Z location
-	double startTime;   // Observation start time
-	double currTime;    // Current observation time
-	double pseudoRange; // Use L1 code phase pseudo range only
-	std::vector<std::string> PRNS;  // PRN names
+	double timeOfEpoch;       // Time of epoch
+	std::unordered_map<int, double> pseudorangeMap; // PRN # vs L1 C/A code pseudorange
+	std::vector<int> PRNS;  // PRN #s (assume all GPS)
+	void clear() {
+		timeOfEpoch = 0.0;
+		pseudorangeMap.clear();
+		PRNS.clear();
+	}
 };

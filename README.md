@@ -16,6 +16,7 @@ Farallon Island
 [Armadillo](http://arma.sourceforge.net/)
 
 ### Ref
+[ICD-200](http://www.gps.gov/technical/icwg/ICD-GPS-200C.pdf)
 
 [RINEX 2.11 SPEC](https://igscb.jpl.nasa.gov/igscb/data/format/rinex211.txt)
 
