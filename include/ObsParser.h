@@ -12,6 +12,7 @@ public:
 		_headerDataEndCol = 60;
 	};
 	void parse();
+	std::vector<ObsVars>& getObs() { return this->obs; }
 private:
 	std::vector<ObsVars> obs;
 	std::string _filePath;

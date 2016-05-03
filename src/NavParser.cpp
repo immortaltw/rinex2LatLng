@@ -57,8 +57,8 @@ Ephemeris& NavParser::getEphemeris(double toc, int PRN) {
 	int len = ephForPRN.size()-1;
 	int end = len;
 	int mid = begin;
-	while (mid<=len) {
-		mid = (end+begin)/2;
+	while (mid+1<len) {
+		mid = end-((end-begin)/2);
 		if (ephForPRN[mid]->toc > toc) {
 			end = mid;
 		} else if (ephForPRN[mid]->toc < toc) {

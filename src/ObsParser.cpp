@@ -39,23 +39,16 @@ void ObsParser::parse() {
 		// Parse current eph
 		case 2:
 		{
-			if (curLineCnt == totalLines) state = 3;
-			else {
-				// if (epochFlag == 0) _parseObs(str, curObs, curLineCnt);
+			if (curLineCnt == totalLines+1) {
+				if (epochFlag == 0) this->obs.push_back(curObs);
+				curObs.clear();
+				curLineCnt = 1;
+				obsCount++;
+				totalLines = _parseFirstLineOfObs(str, curObs, epochFlag);
+			} else {
+				if (epochFlag == 0) _parseObs(str, curObs, curLineCnt);
 				curLineCnt++;
 			}
-			break;
-		}
-		// End of current obs parsing.
-		// Add curObs to obs list and jump to next one.
-		case 3:
-		{
-			// if (epochFlag == 0) this->obs.push_back(curObs);
-			curObs.clear();
-			state = 2;
-			curLineCnt = 1;
-			obsCount++;
-			totalLines = _parseFirstLineOfObs(str, curObs, epochFlag);
 			break;
 		}
 		default:
@@ -99,10 +92,14 @@ int ObsParser::_parseFirstLineOfObs(std::string &line, ObsVars &curObs, int &epo
 	double min = std::stod(line.substr(12, 3));
 	double s = std::stod(line.substr(15, 11));
 	double timeOfEpoch = Utility::secondsFromGPSBegin(y, m, d, h, min, s);
+	curObs.timeOfEpoch = timeOfEpoch;
 
 	epochFlag = std::stoi(line.substr(26, 3));
 
 	int numOfSv = std::stoi(line.substr(29, 3));
+	for (int i=0; i<numOfSv; ++i) {
+		curObs.PRNS.push_back(std::stoi(line.substr(32+i*3+1, 2)));
+	}
 
 	double dt = 0;
 	if (line.size() > 68) {
@@ -113,6 +110,11 @@ int ObsParser::_parseFirstLineOfObs(std::string &line, ObsVars &curObs, int &epo
 }
 
 void ObsParser::_parseObs(std::string &line, ObsVars &curObs, int curLineNum) {
+	// Check if C1 is in current line.
+	if (!(this->_numOfObs <= 5 && !curLineNum%2) &&
+		!(this->_numOfObs > 5 && curLineNum%2)) return;
 
+	int curSV = curObs.PRNS[(this->_numOfObs<=5)?curLineNum:curLineNum/2];
+	curObs.PRMap[curSV] = std::stod(line.substr(16*(this->_C1Locator-1), 14));
 }
 
