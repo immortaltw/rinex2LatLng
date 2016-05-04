@@ -15,6 +15,9 @@ int main() {
 	std::cout << "Calculating the location of first 10 observations." << std::endl;
 
 	std::vector<ObsVars> obs = oParser.getObs();
-	std::cout << obs.size() << std::endl;
 
+	for (int i=0; i<10; ++i) {
+		ObsVars _curObs = obs[i];
+		Ephemeris eph = nParser.getEphemeris(1144800000, 8);
+	}
 }

@@ -48,24 +48,26 @@ void NavParser::parse() {
 Ephemeris& NavParser::getEphemeris(double toc, int PRN) {
 	std::vector<Ephemeris *> ephForPRN;
 	for (int i=0; i<this->_ephemeris.size(); ++i) {
-		Ephemeris eph = this->_ephemeris[i];
-		if (eph.PRN == PRN) ephForPRN.push_back(&eph);
+		if (this->_ephemeris[i].PRN == PRN) {
+			ephForPRN.push_back(&this->_ephemeris[i]);
+		}
 	}
 
-	// Binary search
+	// return *ephForPRN[0];
+	// Binary search, since toc is sorted.
 	int begin = 0;
 	int len = ephForPRN.size()-1;
 	int end = len;
 	int mid = begin;
-	while (mid+1<len) {
+	while (begin+1<end) {
 		mid = end-((end-begin)/2);
 		if (ephForPRN[mid]->toc > toc) {
 			end = mid;
 		} else if (ephForPRN[mid]->toc < toc) {
-			begin = mid+1;
+			begin = mid;
 		} else break;
 	}
-	return *ephForPRN[mid];
+	return *ephForPRN[begin];
 }
 
 void NavParser::_parseIonoAlpha(std::string &line) {
