@@ -1,3 +1,6 @@
+#ifndef ephemeris_h
+#define ephemeris_h
+
 /**
  * Extract from navigation file.
  * Will be used to calculate SV position.
@@ -7,7 +10,7 @@ struct Ephemeris {
 	double af0;  // SV clock bias
 	double af1;  // SV clock drift
 	double af2;  // SV clock drift rate
-	double toe;  // Time of week
+	double toe;  // Time of ephemeris
 	double toc;  // Time of clock
 	/** 
 	 * Perturbation Params
@@ -31,3 +34,5 @@ struct Ephemeris {
 	double omega;
 	double e;
 };
+
+#endif

@@ -18,6 +18,11 @@ int main() {
 
 	for (int i=0; i<10; ++i) {
 		ObsVars _curObs = obs[i];
-		Ephemeris eph = nParser.getEphemeris(1144800000, 8);
+
+		for (int j=0; j<_curObs.PRNS.size(); ++j) {
+			Ephemeris eph = nParser.getEphemeris(_curObs.timeOfEpoch, _curObs.PRNS[j]);
+		}
+
+
 	}
 }
