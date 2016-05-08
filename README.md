@@ -27,6 +27,7 @@ Those are computed location from first 5 observations of the .o file. The result
 - Ionosphere correction
 - Rotated ECEF correction
 - More precise GPS time/week calculation.
+- More efficient parsing and comupting process. (Lots of brute force right now)
 
 ### Dependencies
 
