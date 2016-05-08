@@ -12,7 +12,7 @@ Farallon Island
 | 37.6972 | -123.0008 | -21.7 | -2658220.5 | -4138072.8 | 4049411.8 |
 
 ### Current Result
-Those are computed location from first 5 observations of the .o file. The result is actually very bad. Errors are huge. Something must went wrong in the code. Might be because of the sloppy GPS time/week conversion or tropo/iono corrections not yet implemented.
+Those are computed location from first 5 observations of the .o file. The result is actually very bad. Errors are huge. Something must went wrong in the code. Might be because of the sloppy GPS time/week conversion or because of tropo/iono corrections not yet implemented.
 
 | X(m) | Y(m) | Z(m) |
 | ---- | ---- | ---- |
