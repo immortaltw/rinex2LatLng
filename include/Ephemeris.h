@@ -12,6 +12,7 @@ struct Ephemeris {
 	double af2;  // SV clock drift rate
 	double toe;  // Time of ephemeris
 	double toc;  // Time of clock
+	double week; // GPS Week number
 	/** 
 	 * Perturbation Params
 	 */

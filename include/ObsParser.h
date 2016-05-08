@@ -13,6 +13,10 @@ public:
 	};
 	void parse();
 	std::vector<ObsVars>& getObs() { return this->obs; }
+	std::vector<double> getApproxXYZ() { 
+		std::vector<double> ret {_x0, _y0, _z0};
+		return ret;
+	}
 private:
 	std::vector<ObsVars> obs;
 	std::string _filePath;

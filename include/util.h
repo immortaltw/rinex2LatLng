@@ -16,8 +16,10 @@ public:
 	static double fortranD2cppD(std::string &fortranD);
 	static double secondsFromGPSBegin(double y, double m, double d,
 									  double h, double min, double s);
-	static SatPos computeSatPos(double GPSTime, Ephemeris &eph);
+	static SatPos computeSatPos(double SVTime, Ephemeris &eph);
 	static std::vector<double> ecef2lla(SatPos &pos);
+
+	// TODO: tropo error, iono error
 };
 
 

@@ -159,7 +159,7 @@ void NavParser::_fillEph(int nthLine, Ephemeris &eph, std::string &line) {
 		std::string _cic = line.substr(22, 19);
 		std::string _omega0 = line.substr(41, 19);
 		std::string _cis = line.substr(60, 19);
-		eph.crs = Utility::fortranD2cppD(_toe);
+		eph.toe = Utility::fortranD2cppD(_toe);
 		eph.cic = Utility::fortranD2cppD(_cic);
 		eph.omega0 = Utility::fortranD2cppD(_omega0);
 		eph.cis = Utility::fortranD2cppD(_cis);
@@ -180,9 +180,9 @@ void NavParser::_fillEph(int nthLine, Ephemeris &eph, std::string &line) {
 	case 5:
 	{
 		std::string _idot = line.substr(3, 19);
-		// std::string _tow = line.substr(41, 19);
+		std::string _week = line.substr(41, 19);
 		eph.idot = Utility::fortranD2cppD(_idot);
-		// eph.tow = Utility::fortranD2cppD(_tow);
+		eph.week = Utility::fortranD2cppD(_week);
 		break;
 	}
 	default:
