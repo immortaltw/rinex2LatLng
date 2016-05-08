@@ -15,7 +15,7 @@ int main() {
 	oParser.parse();
 
 	std::cout << "Parsing o and n files done." << std::endl;
-	std::cout << "Calculating the location of first 10 observations." << std::endl;
+	std::cout << "Calculating the location of first 5 observations." << std::endl;
 
 	std::vector<ObsVars> obs = oParser.getObs();
 	std::vector<double> approxPos = oParser.getApproxXYZ();
@@ -26,7 +26,7 @@ int main() {
 	mat X(4, 1);
 	X.fill(0.0);
 
-	// Comupte locations from the first 10 observations of the o file.
+	// Comupte locations from the first 5 observations of the o file.
 	for (int i=0; i<5; ++i) {
 		ObsVars _curObs = obs[i];
 		int numOfSV = _curObs.PRNS.size();
